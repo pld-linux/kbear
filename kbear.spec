@@ -5,7 +5,7 @@ Version:	2.1.1
 Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://dl.sourceforge.net/kbear/%{name}-%{version}-%{release}.src.tar.bz2
+Source0:	http://dl.sourceforge.net/kbear/%{name}-%{version}-1.src.tar.bz2
 # Source0-md5:	5ab2ed17353338cbac5fbe968e53d203
 URL:		http://kbear.sourceforge.net/
 BuildRequires:	kdelibs-devel >= 3.2
