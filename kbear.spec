@@ -27,7 +27,7 @@ danych o serwerach.
 %setup -q
 
 %build
-CFLAGS="%{rpmcflags}" CXXFLAGS="%{rpmcflags}" 
+CFLAGS="%{rpmcflags}" CXXFLAGS="%{rpmcflags}"
 %configure2_13 \
 	--prefix=%{_prefix}
 %{__make} -j 2
