@@ -44,10 +44,11 @@ touch aclocal.m4 stamp-h.in configure Makefile.in kbear/Makefile.in
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/FTP
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/FTP
 mv -f $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/FTP}/kbear.desktop
 
 %find_lang %{name} --with-kde --all-name
