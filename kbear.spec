@@ -1,15 +1,18 @@
 Summary:	kbear - KDE ftp client
 Summary(pl):	Klient ftp oparty o KDE
 Name:		kbear
-Version:	1.2
+Version:	1.2.1
 Release:	1
 License:	GPL
-Group:		Applications/Networking
-# We prefer ftp: URLs if possible
-# Source0:	http://prdownloads.sourceforge.net/kbear/%{name}-%{version}.src.tar.bz2
+Group:		X11/Applications/Networking
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/kbear/%{name}-%{version}.src.tar.bz2
+Patch0:		%{name}-headers.patch
 URL:		http://kbear.sourceforge.net/
+BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_prefix		/usr/X11R6
+%define		_htmldir	/usr/share/doc/kde/HTML
 
 %description
 A graphical FTP client for KDE2 with ability to connect to multiple
@@ -25,25 +28,36 @@ danych o serwerach.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
+kde_htmldir="%{_htmldir}"; export kde_htmldir
+kde_icondir="%{_pixmapsdir}"; export kde_icondir
+
 CFLAGS="%{rpmcflags}" CXXFLAGS="%{rpmcflags}"
-%configure2_13 \
-	--prefix=%{_prefix}
-%{__make} -j 2
+%configure2_13
+
+# ac/am is broken - don't try to rebuild
+touch aclocal.m4 stamp-h.in configure Makefile.in kbear/Makefile.in
+
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
-cd $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/FTP
+mv -f $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/FTP}/kbear.desktop
 
-find . -type d | sed '1,2d;s,^\.,\%attr(-\,root\,root) \%dir ,' > $RPM_BUILD_DIR/file.list.%{name}
-find . -type f | sed 's,^\.,\%attr(-\,root\,root) ,' >> $RPM_BUILD_DIR/file.list.%{name}
-find . -type l | sed 's,^\.,\%attr(-\,root\,root) ,' >> $RPM_BUILD_DIR/file.list.%{name}
+%find_lang %{name} --with-kde --all-name
 
 %clean
-rm -rf $RPM_BUILD_ROOT $RPM_BUILD_DIR/file.list.%{name}
+rm -rf $RPM_BUILD_ROOT
 
-%files -f ../file.list.%{name}
+%files -f %{name}.lang
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/*
+%{_datadir}/apps/kbear
+%{_applnkdir}/Network/FTP/kbear.desktop
+%{_pixmapsdir}/*/*/apps/*
