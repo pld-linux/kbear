@@ -1,4 +1,4 @@
-%define		_beta	beta1
+%define		_beta	beta2
 Summary:	kbear - KDE ftp client
 Summary(pl):	Klient ftp oparty o KDE
 Name:		kbear
@@ -6,9 +6,9 @@ Version:	2.0
 Release:	%{_beta}.1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/kbear/%{name}-%{version}%{_beta}.src.tar.bz2
+Source0:	http://prdownloads.sourceforge.net/kbear/%{name}-%{version}%{_beta}.src.tar.bz2
 URL:		http://kbear.sourceforge.net/
-BuildRequires:	kdelibs-devel
+BuildRequires:	kdelibs-devel >= 3.0.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -73,7 +73,7 @@ mv -f $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/FTP}/kbear.desktop
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
+%post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
