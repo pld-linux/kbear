@@ -2,7 +2,7 @@ Name:		kbear
 Summary:	kbear
 Version:	1.2
 Release:	1
-Source0:	/usr/src/redhat/SOURCES/%{name}-%{version}.src.tar.bz2
+Source0:	%{name}-%{version}.src.tar.bz2
 Group:		Applications/Internet
 ######		Unknown group!
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
