@@ -38,7 +38,7 @@ hosts simultanously. With KBear you can copy/move files or folders
 between hosts with drag and drop or cut and paste. It also has a
 flexible site database.
 
-%description -l pl devel
+%description devel -l pl
 Graficzny klient FTP dla KDE z mo¿liwo¶ci± jednoczesnego ³±czenia z
 wieloma serwerami. KBear pozwala kopiowaæ/przenosiæ pliki lub foldery
 miêdzy serwerami przez drag-and-drop lub wytnij-wklej. Ma te¿ bazê
