@@ -1,20 +1,27 @@
 Name:		kbear
-Summary:	kbear
+Summary:	kbear - KDE ftp client
+Summary(pl):	Klient ftp oparty o KDE
 Version:	1.2
 Release:	1
-Source0:	%{name}-%{version}.src.tar.bz2
-Group:		Applications/Internet
-######		Unknown group!
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 License:	GPL
-Url:		http://www.kbear.org/
-Vendor:		Redhat
+Group:		Applications/Networking
+Group(de):	Applikationen/Netzwerkwesen
+Group(pl):	Aplikacje/Sieciowe
+Source0:	http://prdownloads.sourceforge.net/kbear/%{name}-%{version}.src.tar.bz2
+URL:		http://kbear.sourceforge.net/
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 A graphical FTP client for KDE2 with ability to connect to multiple
 hosts simultanously. With KBear you can copy/move files or folders
 between hosts with drag and drop or cut and paste. It also has a
 flexible site database.
+
+%description -l pl
+Graficzny klient FTP dla KDE2 z mo¿liwo¶ci± jednoczesnego ³±czenia z
+wieloma serwerami. KBear pozwala kopiowaæ/przenosiæ pliki lub foldery
+miêdzy serwerami przez drag-and-drop lub wytnij-wklej. Ma te¿ bazê
+danych o serwerach.
 
 %prep
 %setup -q
