@@ -2,7 +2,7 @@ Summary:	kbear - KDE ftp client
 Summary(pl):	Klient ftp oparty o KDE
 Name:		kbear
 Version:	1.2.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/kbear/%{name}-%{version}.src.tar.bz2
