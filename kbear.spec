@@ -80,6 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog KNOWN_BUGS NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*.so*
 %attr(755,root,root) %{_libdir}/kde3/*.so
