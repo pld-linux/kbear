@@ -7,7 +7,6 @@ Release:	%{_beta}.1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/kbear/%{name}-%{version}%{_beta}.src.tar.bz2
-Patch0:		%{name}-headers.patch
 URL:		http://kbear.sourceforge.net/
 BuildRequires:	kdelibs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -47,7 +46,6 @@ danych o serwerach.
 
 %prep
 %setup -q -n %{name}-%{version}%{_beta}
-#%patch0 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
