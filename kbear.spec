@@ -9,7 +9,7 @@ Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 # We prefer ftp: URLs if possible
 # Source0:	http://prdownloads.sourceforge.net/kbear/%{name}-%{version}.src.tar.bz2
-Source0:	http://ftp.sourceforge.net/pub/sourceforge/kbear/%{name}-%{version}.src.tar.bz2
+Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/kbear/%{name}-%{version}.src.tar.bz2
 URL:		http://kbear.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
