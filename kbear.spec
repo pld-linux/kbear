@@ -1,6 +1,6 @@
-Name:		kbear
 Summary:	kbear - KDE ftp client
 Summary(pl):	Klient ftp oparty o KDE
+Name:		kbear
 Version:	1.2
 Release:	1
 License:	GPL
@@ -29,7 +29,9 @@ danych o serwerach.
 %setup -q
 
 %build
-CFLAGS="%{rpmcflags}" CXXFLAGS="%{rpmcflags}" ./configure --prefix=%{_prefix}
+CFLAGS="%{rpmcflags}" CXXFLAGS="%{rpmcflags}" 
+%configure2_13 \
+	--prefix=%{_prefix}
 %{__make} -j 2
 
 %install
