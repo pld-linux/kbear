@@ -1,29 +1,31 @@
-Name: kbear
-Summary: kbear
-Version: 1.2
-Release: 1
-Source: /usr/src/redhat/SOURCES/kbear-1.2.src.tar.bz2
-Group: Applications/Internet
-BuildRoot: /var/tmp/build-root-%{name}
-Copyright: GPL
-Packager: Björn Sahlström
-Distribution: 7
-Prefix: /usr --with-qt-dir=/usr/lib/qt-2.2.2
-Url: http://www.kbear.org/
-Vendor: Redhat
+Name:		kbear
+Summary:	kbear
+Version:	1.2
+Release:	1
+Source0:	/usr/src/redhat/SOURCES/%{name}-%{version}.src.tar.bz2
+Group:		Applications/Internet
+######		Unknown group!
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+License:	GPL
+Url:		http://www.kbear.org/
+Vendor:		Redhat
+
 %description
-A graphical FTP client for KDE2 with ability to connect to multiple hosts simultanously.
-With KBear you can copy/move files or folders between hosts with drag and drop or cut and paste.
-It also has a flexible site database.
+A graphical FTP client for KDE2 with ability to connect to multiple
+hosts simultanously. With KBear you can copy/move files or folders
+between hosts with drag and drop or cut and paste. It also has a
+flexible site database.
+
 %prep
-rm -rf $RPM_BUILD_ROOT 
-mkdir $RPM_BUILD_ROOT
 %setup -q
+
 %build
-CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{prefix}
-make -j 2
+CFLAGS="%{rpmcflags}" CXXFLAGS="%{rpmcflags}" ./configure --prefix=%{_prefix}
+%{__make} -j 2
+
 %install
-make DESTDIR=$RPM_BUILD_ROOT install-strip
+rm -rf $RPM_BUILD_ROOT
+%{__make} DESTDIR=$RPM_BUILD_ROOT install
 
 cd $RPM_BUILD_ROOT
 
@@ -35,4 +37,4 @@ find . -type l | sed 's,^\.,\%attr(-\,root\,root) ,' >> $RPM_BUILD_DIR/file.list
 rm -rf $RPM_BUILD_ROOT $RPM_BUILD_DIR/file.list.%{name}
 
 %files -f ../file.list.%{name}
-%defattr(-,root,root,0755)
+%defattr(644,root,root,755)
