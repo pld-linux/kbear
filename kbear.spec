@@ -7,6 +7,7 @@ Release:	%{_beta}.1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://dl.sourceforge.net/kbear/%{name}-%{version}%{_beta}.src.tar.bz2
+# Source0-md5:	8131badd6f38d131a1d5b6fd271822f8
 URL:		http://kbear.sourceforge.net/
 BuildRequires:	kdelibs-devel >= 3.0.3
 BuildRequires:	kdesdk
