@@ -9,6 +9,7 @@ Group:		X11/Applications/Networking
 Source0:	http://prdownloads.sourceforge.net/kbear/%{name}-%{version}%{_beta}.src.tar.bz2
 URL:		http://kbear.sourceforge.net/
 BuildRequires:	kdelibs-devel >= 3.0.3
+BuildRequires:	kdesdk
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
