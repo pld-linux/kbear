@@ -1,16 +1,16 @@
-%define		_beta	beta2
 Summary:	kbear - KDE ftp client
 Summary(pl):	Klient ftp oparty o KDE
 Name:		kbear
-Version:	2.0
-Release:	%{_beta}.1
+Version:	2.1.1
+Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://dl.sourceforge.net/kbear/%{name}-%{version}%{_beta}.src.tar.bz2
-# Source0-md5:	8131badd6f38d131a1d5b6fd271822f8
+Source0:	http://dl.sourceforge.net/kbear/%{name}-%{version}-%{release}.src.tar.bz2
+# Source0-md5:	5ab2ed17353338cbac5fbe968e53d203
 URL:		http://kbear.sourceforge.net/
-BuildRequires:	kdelibs-devel >= 3.0.3
-BuildRequires:	kdesdk
+BuildRequires:	kdelibs-devel >= 3.2
+BuildRequires:	kdebase-devel >= 3.2
+#BuildRequires:	kdesdk
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_htmldir	/usr/share/doc/kde/HTML
@@ -46,13 +46,12 @@ miêdzy serwerami przez drag-and-drop lub wytnij-wklej. Ma te¿ bazê
 danych o serwerach.
 
 %prep
-%setup -q -n %{name}-%{version}%{_beta}
+%setup -q -n %{name}-2.1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
-CFLAGS="%{rpmcflags}" CXXFLAGS="%{rpmcflags}"
 %configure
 
 # ac/am is broken - don't try to rebuild
@@ -67,7 +66,7 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/FTP
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv -f $RPM_BUILD_ROOT%{_applnkdir}/{Internet,Network/FTP}/kbear.desktop
+mv $RPM_BUILD_ROOT%{_datadir}/applnk/Internet/kbear.desktop $RPM_BUILD_ROOT%{_applnkdir}/Network/FTP
 
 %find_lang %{name} --with-kde --all-name
 
@@ -83,12 +82,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*.so*
 %attr(755,root,root) %{_libdir}/kde3/*.so
+%{_libdir}/*.la
+%{_libdir}/kde3/*.la
 %{_datadir}/apps/kbear
-%{_datadir}/apps/kbearfilesyspart/*.rc
-%{_datadir}/apps/kbearsitemanager/kpartplugins/*.rc
-%{_datadir}/apps/konqiconview/kpartplugins/*.rc
-%{_datadir}/apps/konqlistview/kpartplugins/*.rc
-%{_datadir}/services/kbearftp.protocol
+%{_datadir}/apps/kbeardirsynchpart
+%{_datadir}/apps/kbearfilesyspart
+%{_datadir}/services/*
+%{_datadir}/servicetypes/*
 %{_applnkdir}/Network/FTP/kbear.desktop
 %{_pixmapsdir}/*/*/apps/*
 %{_pixmapsdir}/*/*/actions/*
@@ -96,5 +96,3 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/kbear/*.h
-%{_libdir}/*.la
-%{_libdir}/kde3/*.la
