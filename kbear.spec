@@ -57,19 +57,19 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 # ac/am is broken - don't try to rebuild
 touch aclocal.m4 stamp-h.in configure Makefile.in kbear/Makefile.in
 
-#UGLY hack
-#kto¶ wie jak to zapisaæ w makefile.* jako patch ?? 
+# UGLY hack
+# kto¶ wie jak to zapisaæ w makefile.* jako patch ?? 
 for i in `find . -name '*.ui'`; do echo $i; a=`echo $i|sed 's/\.ui$//g'`; uic $i -o ${a}.h;done
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/FTP
+install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv $RPM_BUILD_ROOT%{_datadir}/applnk/Internet/kbear.desktop $RPM_BUILD_ROOT%{_applnkdir}/Network/FTP
+mv $RPM_BUILD_ROOT%{_datadir}/applnk/Internet/kbear.desktop $RPM_BUILD_ROOT%{_desktopdir}
 
 %find_lang %{name} --with-kde --all-name
 
@@ -92,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kbearfilesyspart
 %{_datadir}/services/*
 %{_datadir}/servicetypes/*
-%{_applnkdir}/Network/FTP/kbear.desktop
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*/*/apps/*
 %{_pixmapsdir}/*/*/actions/*
 
