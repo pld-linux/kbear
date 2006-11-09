@@ -31,7 +31,7 @@ danych o serwerach.
 Summary:	kbear - KDE FTP client
 Summary(pl):	Klient FTP oparty o KDE
 Group:		X11/Development/Tools
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 A graphical FTP client for KDE with ability to connect to multiple
