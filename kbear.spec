@@ -1,5 +1,5 @@
 Summary:	kbear - KDE FTP client
-Summary(pl.UTF-8):   Klient FTP oparty o KDE
+Summary(pl.UTF-8):	Klient FTP oparty o KDE
 Name:		kbear
 Version:	2.1.1
 Release:	1
@@ -29,7 +29,7 @@ danych o serwerach.
 
 %package devel
 Summary:	kbear - KDE FTP client
-Summary(pl.UTF-8):   Klient FTP oparty o KDE
+Summary(pl.UTF-8):	Klient FTP oparty o KDE
 Group:		X11/Development/Tools
 Requires:	%{name} = %{version}-%{release}
 
